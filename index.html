@@ -1,22 +1,450 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Parminder Grewal</title>
-<meta charset="UTF-8">
-<style>
-body { font-family: Arial; background:#111; color:#eee; max-width:800px; margin:auto; padding:40px; }
-h1 { color:#4db8ff; }
-a { color:#4db8ff; }
-</style>
+  <meta charset="UTF-8" />
+  <title>Parminder Grewal | Data & AI Engineer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #05070b;
+      --bg-elevated: #0d1018;
+      --accent: #4fd1c5;
+      --accent-soft: rgba(79, 209, 197, 0.12);
+      --text-main: #f5f5f5;
+      --text-muted: #a0aec0;
+      --border-subtle: #1a202c;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020308 60%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 32px 16px 56px;
+    }
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+    .avatar {
+      width: 90px;
+      height: 90px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      border: 2px solid var(--accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 28px;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    .hero-text h1 {
+      font-size: 2.3rem;
+      letter-spacing: 0.03em;
+      margin-bottom: 6px;
+    }
+    .hero-tagline {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      max-width: 520px;
+    }
+    .hero-pill {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+    .pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.78rem;
+      border: 1px solid rgba(79, 209, 197, 0.35);
+    }
+    .hero-links {
+      margin-top: 10px;
+      font-size: 0.9rem;
+    }
+    .hero-links span {
+      color: var(--text-muted);
+      margin-right: 6px;
+    }
+    .hero-links a {
+      margin-right: 10px;
+    }
+
+    .section {
+      margin-bottom: 34px;
+      padding: 22px 20px;
+      background: rgba(15, 23, 42, 0.88);
+      border-radius: 18px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 18px 35px rgba(0, 0, 0, 0.45);
+    }
+    .section h2 {
+      font-size: 1.15rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+    .section h3 {
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+    .section p {
+      font-size: 0.95rem;
+    }
+    .about-main {
+      font-size: 0.98rem;
+      color: #e5e7eb;
+    }
+    .about-main strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .chips-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .chip {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: #020617;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+      margin-top: 12px;
+    }
+    .card {
+      border-radius: 14px;
+      padding: 14px 14px 13px;
+      background: linear-gradient(145deg, #020617, #020617);
+      border: 1px solid var(--border-subtle);
+      position: relative;
+      overflow: hidden;
+    }
+    .card h3 {
+      font-size: 0.98rem;
+      margin-bottom: 4px;
+    }
+    .card small {
+      color: var(--text-muted);
+      font-size: 0.78rem;
+    }
+    .card p {
+      font-size: 0.9rem;
+      margin-top: 6px;
+      color: #e5e7eb;
+    }
+    .card-tag {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 0.7rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: var(--text-muted);
+      background: rgba(15, 23, 42, 0.8);
+    }
+
+    .experience-item {
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px dashed var(--border-subtle);
+    }
+    .experience-item:first-of-type {
+      border-top: none;
+      padding-top: 0;
+    }
+    .experience-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 6px;
+      font-size: 0.9rem;
+    }
+    .experience-header span {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+    .experience-item p {
+      margin-top: 4px;
+      font-size: 0.9rem;
+    }
+
+    .pub {
+      font-size: 0.9rem;
+    }
+    .pub strong {
+      color: var(--accent);
+    }
+
+    .quote {
+      margin-top: 8px;
+      padding-left: 10px;
+      border-left: 2px solid var(--accent-soft);
+      font-style: italic;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .contact-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+      font-size: 0.9rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--accent);
+      color: #0b1120;
+      background: var(--accent);
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+    .btn.secondary {
+      background: transparent;
+      color: var(--accent);
+    }
+    .footer-note {
+      margin-top: 10px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 640px) {
+      header {
+        align-items: flex-start;
+      }
+      .hero-text h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
 </head>
 <body>
-<h1>Parminder Grewal</h1>
-<h3>Data & AI Engineer · Multimodal AI Researcher (ACM DHOW’25)</h3>
-<p><b>Cloud · ETL Pipelines · GenAI · Multimodal Models</b></p>
-<hr>
-<h2>Professional Summary</h2>
-<p>AI Engineer with 7+ years of experience delivering GenAI, agentic AI systems, multimodal pipelines, and data‑intensive applications...</p>
-<hr>
-<a href="projects.html">Projects</a> | <a href="experience.html">Experience</a>
+  <div class="page">
+    <header>
+      <div class="avatar">PG</div>
+      <div class="hero-text">
+        <h1>Parminder Grewal</h1>
+        <p class="hero-tagline">
+          Hi, I’m Parminder. I work at the intersection of data engineering,
+          multimodal AI, and practical research — building systems that are
+          measurable, explainable, and actually used.
+        </p>
+        <div class="hero-pill">
+          <span class="pill">Data &amp; AI Engineer</span>
+          <span class="pill">Multimodal AI Researcher (ACM DHOW’25)</span>
+          <span class="pill">Cloud &amp; ETL Pipelines</span>
+          <span class="pill">GenAI &amp; Agentic Workflows</span>
+        </div>
+        <div class="hero-links">
+          <span>Elsewhere:</span>
+          <a href="mailto:parmindergrewal0791@gmail.com">Email</a>
+          <a href="https://www.linkedin.com/in/parminder-grewal" target="_blank">LinkedIn</a>
+          <a href="https://github.com/Grewal-Pam" target="_blank">GitHub</a>
+        </div>
+      </div>
+    </header>
+
+    <section class="section">
+      <h2>About</h2>
+      <p class="about-main">
+        I enjoy taking messy, real-world data and turning it into
+        <strong>reliable pipelines</strong> and <strong>useful AI systems</strong>.
+        My work sits between engineering and research: from ELT pipelines and
+        cloud infrastructure to multimodal models that combine
+        <strong>text, images, and metadata</strong>.
+      </p>
+      <div class="chips-row">
+        <span class="chip">Python · SQL · PyTorch · Hugging Face</span>
+        <span class="chip">BigQuery · GCP · CI/CD</span>
+        <span class="chip">CLIP · ViLT · FLAVA</span>
+        <span class="chip">RAG · Retrieval · Observability</span>
+      </div>
+      <p class="quote">
+        “I like building AI systems that make sense, not noise.”
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>What I work on</h2>
+      <div class="grid">
+        <div class="card">
+          <div class="card-tag">AI Systems</div>
+          <h3>Multimodal &amp; GenAI</h3>
+          <small>CLIP, ViLT, FLAVA · OCR · NLI · agentic flows</small>
+          <p>
+            Designing pipelines that blend language, vision, and metadata:
+            disinformation detection, multimodal scoring, and transparent
+            decision traces.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-tag">Data &amp; Cloud</div>
+          <h3>ELT &amp; Analytics</h3>
+          <small>Python · SQL · BigQuery · Looker</small>
+          <p>
+            Building ELT layers on GCP with medallion architectures,
+            versioned datasets, and dashboards that teams actually use for
+            decisions.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-tag">Delivery</div>
+          <h3>From prototype to reliable</h3>
+          <small>CSM · CAL I · Agile delivery</small>
+          <p>
+            Guiding ideas from notebooks and experiments into maintainable
+            services with CI/CD, QA checks, and realistic release cycles.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Selected Work</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>TruthMindr — Multimodal AI Agent</h3>
+          <small>Personal project · 2025</small>
+          <p>
+            Prototype agent that processes text, images, and metadata using
+            an end-to-end flow: OCR “Perception” → NLI “Consistency” →
+            metadata “Evidence” → final “Arbiter” decision with a trace.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Disinformation Detection with CLIP, ViLT &amp; FLAVA</h3>
+          <small>Master’s thesis · ACM DHOW’25</small>
+          <p>
+            Multimodal disinformation detection on Fakeddit using
+            vision–language models and metadata fusion. Includes extensive
+            evaluation, ablations, and error analysis.
+          </p>
+        </div>
+        <div class="card">
+          <h3>GCP ELT Pipeline &amp; Knowledge Graph</h3>
+          <small>Data &amp; analytics project</small>
+          <p>
+            ELT pipeline in BigQuery with Bronze/Silver/Gold layers, schema
+            validation, CI/CD checks and Looker dashboards, built to feed a
+            downstream knowledge-graph and exploration UI.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Experience snapshot</h2>
+      <div class="experience-item">
+        <div class="experience-header">
+          <strong>Technical Project Manager · Pädagogisches Landesinstitut Rheinland-Pfalz</strong>
+          <span>2023 – Present · Germany</span>
+        </div>
+        <p>
+          Python-based data checks, SQL validation, and QA automation inside
+          CI/CD pipelines, supporting statewide education platforms with
+          200k+ users.
+        </p>
+      </div>
+      <div class="experience-item">
+        <div class="experience-header">
+          <strong>Senior Programmer · Boeing India</strong>
+          <span>2019 – 2022 · Bengaluru</span>
+        </div>
+        <p>
+          Built microservices and data workflows in C#/.NET and SQL for
+          an airport intelligence platform; focused on performance and
+          reliability.
+        </p>
+      </div>
+      <div class="experience-item">
+        <div class="experience-header">
+          <strong>BT &amp; Accenture</strong>
+          <span>2014 – 2019 · India</span>
+        </div>
+        <p>
+          Worked across .NET, Angular, and backend services for enterprise
+          systems, bringing in unit testing, monitoring, and more predictable
+          releases.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Research</h2>
+      <p class="pub">
+        <strong>ACM DHOW ’25:</strong> Beyond Text: Leveraging Vision-Language
+        Models for Misinformation Detection — Grewal, P., Ernst, M.,
+        Hopfgartner, F.
+      </p>
+      <p style="margin-top:6px;font-size:0.9rem;">
+        I’m particularly interested in how multimodal models behave under
+        real-world noise, and how metadata and explanations can make
+        disinformation detection more trustworthy.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Let’s connect</h2>
+      <p>
+        I’m open to roles and collaborations around data &amp; AI engineering,
+        multimodal systems, and applied research in Europe (and remote).
+      </p>
+      <div class="contact-row">
+        <a class="btn" href="mailto:parmindergrewal0791@gmail.com">Email me</a>
+        <a class="btn secondary" href="https://www.linkedin.com/in/parminder-grewal" target="_blank">
+          View my LinkedIn
+        </a>
+        <a class="btn secondary" href="https://github.com/Grewal-Pam" target="_blank">
+          Browse my GitHub
+        </a>
+      </div>
+      <p class="footer-note">
+        This site is a living space — I update it as experiments, papers,
+        and prototypes evolve.
+      </p>
+    </section>
+  </div>
 </body>
 </html>
